@@ -1,0 +1,33 @@
+= Aussie Dunnies backend application
+
+This application is a backend that provides geolocation information about Aussie Dunnies. The information is stored in a mongodb
+
+
+== Installation
+
+Assuming you're using the project <roadshow>:
+
+----
+oc new-project roadshow
+oc create -f ./ose3/application-template.json
+oc new-app aussiedunnies
+----
+
+There's some options that can be parameterized:
+
+* APPLICATION_NAME: Name of the application
+* APPLICATION_HOSTNAME: Hostname/route to access your application
+
+Example:
+
+----
+oc new-app aussiedunnies -p APPLICATION_HOSTNAME=aussiedunnies-roadshow.127.0.0.1.xip.io
+----
+
+== Sample Data
+
+The data set used for this example is sourced from the Australian Government National Public Toilet Map:
+
+* https://data.gov.au/dataset/national-public-toilet-map
+
+The data is provided under the http://creativecommons.org/licenses/by/3.0/au/[Creative Commons Attribution 3.0 Australia] license.
