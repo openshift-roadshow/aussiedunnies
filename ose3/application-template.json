@@ -251,7 +251,7 @@
                   },
                   {
                     "name": "MONGODB_ADMIN_PASSWORD",
-                    "value": "${MONGODB_ADMIN_USER}"
+                    "value": "${MONGODB_ADMIN_PASSWORD}"
                   }
                 ],
                 "resources": {
@@ -457,6 +457,37 @@
                     "valueFrom": {
                       "fieldRef": {
                         "fieldPath": "metadata.namespace"
+                      }
+                    }
+                  },
+                  {
+                    "name": "DB_HOST",
+                    "value": "${MONGODB_APPLICATION_NAME}"
+                  },
+                  {
+                    "name": "DB_USERNAME",
+                    "valueFrom": {
+                      "configMapKeyRef": {
+                        "name": "aussiedunnies",
+                        "key": "db.user"
+                      }
+                    }
+                  },
+                  {
+                    "name": "DB_PASSWORD",
+                    "valueFrom": {
+                      "configMapKeyRef": {
+                        "name": "aussiedunnies",
+                        "key": "db.password"
+                      }
+                    }
+                  },
+                  {
+                    "name": "DB_NAME",
+                    "valueFrom": {
+                      "configMapKeyRef": {
+                        "name": "aussiedunnies",
+                        "key": "db.name"
                       }
                     }
                   }
