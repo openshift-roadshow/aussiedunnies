@@ -37,6 +37,8 @@ class Info(Resource):
     description = {
         "id": "aussiedunnies",
         "displayName": "Aussie Dunnies",
+        "type": "marker",
+        #"scope": "within",
         "center": {"latitude": "-23.69994803", "longitude": "133.88028079"},
         "zoom": 4
     }
