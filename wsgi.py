@@ -19,10 +19,6 @@ DB_URI = 'mongodb://%s:%s@%s:27017/%s' % (DB_USERNAME, DB_PASSWORD,
 
 DATASET_FILE = 'ToiletmapExport_161101_090000.csv'
 
-client = MongoClient(DB_URI)
-database = client[DB_NAME]
-collection = database.aussiedunnies
-
 application = Flask(__name__)
 
 api = Api(application)
@@ -37,7 +33,7 @@ class Info(Resource):
     description = {
         "id": "aussiedunnies",
         "displayName": "Aussie Dunnies",
-        "type": "marker",
+        "type": "cluster",
         #"scope": "within",
         "center": {"latitude": "-23.69994803", "longitude": "133.88028079"},
         "zoom": 4
@@ -50,6 +46,10 @@ api.add_resource(Info, '/ws/info/')
 
 class DataLoad(Resource):
     def get(self):
+        client = MongoClient(DB_URI)
+        database = client[DB_NAME]
+        collection = database.aussiedunnies
+
         collection.remove({})
         collection.create_index([('Location', GEO2D)])
 
@@ -96,6 +96,10 @@ def format_result(entries):
 
 class DataAll(Resource):
     def get(self):
+        client = MongoClient(DB_URI)
+        database = client[DB_NAME]
+        collection = database.aussiedunnies
+
         return format_result(collection.find())
 
 api.add_resource(DataAll, '/ws/data/all')
@@ -108,6 +112,10 @@ class DataWithin(Resource):
                [float(args['lon2']), float(args['lat2'])]]
 
         query = {"Location": {"$within": {"$box": box}}}
+
+        client = MongoClient(DB_URI)
+        database = client[DB_NAME]
+        collection = database.aussiedunnies
 
         return format_result(collection.find(query))
 
