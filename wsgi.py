@@ -35,8 +35,8 @@ class Info(Resource):
         "displayName": "Aussie Dunnies",
         "type": "cluster",
         #"scope": "within",
-        "center": {"latitude": "-23.69994803", "longitude": "133.88028079"},
-        "zoom": 4
+        "center": {"latitude": "-33.868598268112706", "longitude": "151.18114471435547"},
+        "zoom": 15
     }
 
     def get(self):
