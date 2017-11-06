@@ -34,7 +34,7 @@ class Info(Resource):
         "id": "aussiedunnies",
         "displayName": "Aussie Dunnies",
         "type": "cluster",
-        "scope": "within",
+        #"scope": "within",
         "center": {"latitude": "-33.87310577115773", "longitude": "151.19792461395264"},
         "zoom": 15
     }
